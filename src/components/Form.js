@@ -6,7 +6,7 @@ const Form = ({
   setInputText,
   todos,
   // status,
-  // setStatus,
+  setStatus,
   // selectedTodos,
   // setSelectedTodos,
 }) => {
@@ -18,37 +18,32 @@ const Form = ({
     e.preventDefault();
     setTodos([
       ...todos,
-      { text: inputText, completed: false, id: Math.random() * 1000 },
+      {
+        text: inputText,
+        completed: false,
+        starred: false,
+        id: Math.random() * 1000,
+      },
     ]);
     setInputText("");
   };
 
-  // switch (status) {
-  //   case "completed":
-  //     setSelectedTodos(todos.filter((item) => (item.completed = true)));
-  //     break;
-  //   case "Not completed":
-  //     setSelectedTodos(todos.filter((item) => (item.completed = false)));
-  //     break;
+  const statusHandler = (e) => {
+    switch (e.target.value) {
+      case "Completed":
+        setStatus("Completed");
+        break;
+      case "Not completed":
+        setStatus("Not completed");
+        break;
 
-  //   default:
-  //     setSelectedTodos(todos);
-  //     break;
-  // }
-
-  // const selectHandler = (e) => {
-  //   switch (e.target.value) {
-  //     case "completed":
-  //       setStatus("completed");
-  //       break;
-  //     case "Not completed":
-  //       setStatus("Not completed");
-  //       break;
-
-  //     default:
-  //       setStatus("all");
-  //       break;
-  //   }
+      default:
+        setStatus("All");
+        break;
+    }
+  };
+  // const statusHandler = (e) => {
+  //   setStatus(e.target.value);
   // };
   return (
     <form id="form">
@@ -62,9 +57,9 @@ const Form = ({
         <i className="fas fa-plus center"></i>
       </button>
       <div className="select">
-        <select name="todos" className="filter_todos">
-          <option value="all">All</option>
-          <option value="completed">Completed</option>
+        <select onChange={statusHandler} name="todos" className="filter_todos">
+          <option value="All">All</option>
+          <option value="Completed">Completed</option>
           <option value="Not completed">Not completed</option>
         </select>
       </div>

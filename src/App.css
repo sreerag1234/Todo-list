@@ -38,7 +38,7 @@ select {
 
 .todo-list {
   list-style: none;
-  min-width: 30%;
+  min-width: 50%;
 }
 .todo {
   border: 1px solid black;
@@ -61,7 +61,7 @@ select {
   margin-top: 5%;
   margin-bottom: 5%;
   height: 100%;
-  width: 15%;
+  width: 10%;
 }
 
 .completed {
@@ -88,11 +88,20 @@ select {
   margin-top: 25%;
 }
 @media (max-width: 767px) {
+  .todo-list {
+    list-style: none;
+    min-width: 80%;
+  }
   .fas {
     text-align: center;
     margin-top: 5%;
     margin-bottom: 5%;
     height: 100%;
-    width: 25%;
+    width: 12%;
+  }
+  .fa-plus {
+    text-align: center;
+    width: 100%;
+    margin-top: 25%;
   }
 }
